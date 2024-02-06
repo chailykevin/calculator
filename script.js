@@ -17,59 +17,82 @@ function divide(a, b) {
 function operate(a, b, operator) {
   switch (operator) {
     case "+":
-      add(a, b);
-      break;
+      return add(a, b);
     case "-":
-      subtract(a, b);
-      break;
+      return subtract(a, b);
     case "*":
-      multiply(a, b);
-      break;
+      return multiply(a, b);
     case "/":
-      divide(a, b);
-      break;
+      return divide(a, b);
   }
 }
 
-//Add event listener to number button
 const buttons = document.querySelector(".buttons");
 const para = document.querySelector("p");
+
+//To store values for operation.
 let a;
 let b;
 
+//getFirst for checking if the a variable has a value or not.
+//reWrite for checking if the result can be overwritten or not.
+let getFirst = false;
+let reWrite = false;
+
+//Add event listener to number button
 buttons.addEventListener("click", (e) => {
   switch (e.target.id) {
     case "0":
-      updatePara("0");
+      updatePara("0", reWrite);
+      reWrite = false;
       break;
     case "1":
-      updatePara("1");
+      updatePara("1", reWrite);
+      reWrite = false;
       break;
     case "2":
-      updatePara("2");
+      updatePara("2", reWrite);
+      reWrite = false;
       break;
     case "3":
-      updatePara("3");
+      updatePara("3", reWrite);
+      reWrite = false;
       break;
     case "4":
-      updatePara("4");
+      updatePara("4", reWrite);
+      reWrite = false;
       break;
     case "5":
-      updatePara("5");
+      updatePara("5", reWrite);
+      reWrite = false;
       break;
     case "6":
-      updatePara("6");
+      updatePara("6", reWrite);
+      reWrite = false;
       break;
     case "7":
-      updatePara("7");
+      updatePara("7", reWrite);
+      reWrite = false;
       break;
     case "8":
-      updatePara("8");
+      updatePara("8", reWrite);
+      reWrite = false;
       break;
     case "9":
-      updatePara("9");
+      updatePara("9", reWrite);
+      reWrite = false;
       break;
     case "add":
+      if (!getFirst) {
+        a = parseFloat(para.textContent);
+        getFirst = true;
+        reWrite = true;
+      } else {
+        b = parseFloat(para.textContent);
+        para.textContent = operate(a, b, "+");
+        a = parseFloat(para.textContent);
+        reWrite = true;
+      }
       break;
     case "subtract":
       break;
@@ -82,10 +105,8 @@ buttons.addEventListener("click", (e) => {
 
 //Function to append paragraph element
 function updatePara(a) {
-  if (para.textContent === "0") {
-    if (a != 0) {
-      para.textContent = a;
-    }
+  if (para.textContent === "0" || reWrite) {
+    para.textContent = a;
   } else {
     para.textContent += a;
   }
