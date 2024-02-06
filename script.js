@@ -118,6 +118,7 @@ buttons.addEventListener("click", (e) => {
         b = parseFloat(para.textContent);
         reWrite = true;
         resultPressed = true;
+        changeOperation = "+";
       }
       break;
     case "subtract":
@@ -141,6 +142,7 @@ buttons.addEventListener("click", (e) => {
         b = parseFloat(para.textContent);
         reWrite = true;
         resultPressed = true;
+        changeOperation = "-";
       }
       break;
     case "multiply":
@@ -164,6 +166,7 @@ buttons.addEventListener("click", (e) => {
         b = parseFloat(para.textContent);
         reWrite = true;
         resultPressed = true;
+        changeOperation = "*";
       }
       break;
     case "divide":
@@ -187,6 +190,7 @@ buttons.addEventListener("click", (e) => {
         b = parseFloat(para.textContent);
         reWrite = true;
         resultPressed = true;
+        changeOperation = "/";
       }
       break;
     case "result":
@@ -197,7 +201,6 @@ buttons.addEventListener("click", (e) => {
         reWrite = true;
         buttonEnabled = false;
         resultPressed = false;
-        console.log("HI");
       }
       break;
   }
