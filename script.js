@@ -42,6 +42,7 @@ let getFirst = false;
 let reWrite = false;
 let buttonEnabled = false;
 let changeOperation = "";
+let resultPressed = true;
 
 //Add event listener to number button
 buttons.addEventListener("click", (e) => {
@@ -112,6 +113,10 @@ buttons.addEventListener("click", (e) => {
           buttonEnabled = false;
           changeOperation = "+";
         }
+      } else {
+        b = parseFloat(para.textContent);
+        reWrite = true;
+        resultPressed = true;
       }
       break;
     case "subtract":
@@ -129,7 +134,12 @@ buttons.addEventListener("click", (e) => {
           reWrite = true;
           buttonEnabled = false;
           changeOperation = "-";
+          resultPressed = true;
         }
+      } else {
+        b = parseFloat(para.textContent);
+        reWrite = true;
+        resultPressed = true;
       }
       break;
     case "multiply":
@@ -147,7 +157,12 @@ buttons.addEventListener("click", (e) => {
           reWrite = true;
           buttonEnabled = false;
           changeOperation = "*";
+          resultPressed = true;
         }
+      } else {
+        b = parseFloat(para.textContent);
+        reWrite = true;
+        resultPressed = true;
       }
       break;
     case "divide":
@@ -165,7 +180,23 @@ buttons.addEventListener("click", (e) => {
           reWrite = true;
           buttonEnabled = false;
           changeOperation = "/";
+          resultPressed = true;
         }
+      } else {
+        b = parseFloat(para.textContent);
+        reWrite = true;
+        resultPressed = true;
+      }
+      break;
+    case "result":
+      if (getFirst && resultPressed) {
+        b = parseFloat(para.textContent);
+        para.textContent = operate(a, b, changeOperation);
+        a = parseFloat(para.textContent);
+        reWrite = true;
+        buttonEnabled = false;
+        resultPressed = false;
+        console.log("HI");
       }
       break;
   }
