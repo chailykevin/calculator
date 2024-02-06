@@ -37,9 +37,11 @@ let b;
 //getFirst for checking if the a variable has a value or not.
 //reWrite for checking if the result can be overwritten or not.
 //buttonEnabled to prevent spam click operatioin button.
+//changeOperation to store operation value.
 let getFirst = false;
 let reWrite = false;
 let buttonEnabled = false;
+let changeOperation = "";
 
 //Add event listener to number button
 buttons.addEventListener("click", (e) => {
@@ -101,12 +103,14 @@ buttons.addEventListener("click", (e) => {
           getFirst = true;
           reWrite = true;
           buttonEnabled = false;
+          changeOperation = "+";
         } else {
           b = parseFloat(para.textContent);
-          para.textContent = operate(a, b, "+");
+          para.textContent = operate(a, b, changeOperation);
           a = parseFloat(para.textContent);
           reWrite = true;
           buttonEnabled = false;
+          changeOperation = "+";
         }
       }
       break;
@@ -117,12 +121,14 @@ buttons.addEventListener("click", (e) => {
           getFirst = true;
           reWrite = true;
           buttonEnabled = false;
+          changeOperation = "-";
         } else {
           b = parseFloat(para.textContent);
-          para.textContent = operate(a, b, "-");
+          para.textContent = operate(a, b, changeOperation);
           a = parseFloat(para.textContent);
           reWrite = true;
           buttonEnabled = false;
+          changeOperation = "-";
         }
       }
       break;
@@ -133,12 +139,14 @@ buttons.addEventListener("click", (e) => {
           getFirst = true;
           reWrite = true;
           buttonEnabled = false;
+          changeOperation = "*";
         } else {
           b = parseFloat(para.textContent);
-          para.textContent = operate(a, b, "*");
+          para.textContent = operate(a, b, changeOperation);
           a = parseFloat(para.textContent);
           reWrite = true;
           buttonEnabled = false;
+          changeOperation = "*";
         }
       }
       break;
@@ -149,12 +157,14 @@ buttons.addEventListener("click", (e) => {
           getFirst = true;
           reWrite = true;
           buttonEnabled = false;
+          changeOperation = "/";
         } else {
           b = parseFloat(para.textContent);
-          para.textContent = operate(a, b, "/");
+          para.textContent = operate(a, b, changeOperation);
           a = parseFloat(para.textContent);
           reWrite = true;
           buttonEnabled = false;
+          changeOperation = "/";
         }
       }
       break;
