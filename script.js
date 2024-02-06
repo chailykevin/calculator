@@ -36,8 +36,10 @@ let b;
 
 //getFirst for checking if the a variable has a value or not.
 //reWrite for checking if the result can be overwritten or not.
+//buttonEnabled to prevent spam click operatioin button.
 let getFirst = false;
 let reWrite = false;
+let buttonEnabled = false;
 
 //Add event listener to number button
 buttons.addEventListener("click", (e) => {
@@ -45,60 +47,116 @@ buttons.addEventListener("click", (e) => {
     case "0":
       updatePara("0", reWrite);
       reWrite = false;
+      buttonEnabled = true;
       break;
     case "1":
       updatePara("1", reWrite);
       reWrite = false;
+      buttonEnabled = true;
       break;
     case "2":
       updatePara("2", reWrite);
       reWrite = false;
+      buttonEnabled = true;
       break;
     case "3":
       updatePara("3", reWrite);
       reWrite = false;
+      buttonEnabled = true;
       break;
     case "4":
       updatePara("4", reWrite);
       reWrite = false;
+      buttonEnabled = true;
       break;
     case "5":
       updatePara("5", reWrite);
       reWrite = false;
+      buttonEnabled = true;
       break;
     case "6":
       updatePara("6", reWrite);
       reWrite = false;
+      buttonEnabled = true;
       break;
     case "7":
       updatePara("7", reWrite);
       reWrite = false;
+      buttonEnabled = true;
       break;
     case "8":
       updatePara("8", reWrite);
       reWrite = false;
+      buttonEnabled = true;
       break;
     case "9":
       updatePara("9", reWrite);
       reWrite = false;
+      buttonEnabled = true;
       break;
     case "add":
-      if (!getFirst) {
-        a = parseFloat(para.textContent);
-        getFirst = true;
-        reWrite = true;
-      } else {
-        b = parseFloat(para.textContent);
-        para.textContent = operate(a, b, "+");
-        a = parseFloat(para.textContent);
-        reWrite = true;
+      if (buttonEnabled) {
+        if (!getFirst) {
+          a = parseFloat(para.textContent);
+          getFirst = true;
+          reWrite = true;
+          buttonEnabled = false;
+        } else {
+          b = parseFloat(para.textContent);
+          para.textContent = operate(a, b, "+");
+          a = parseFloat(para.textContent);
+          reWrite = true;
+          buttonEnabled = false;
+        }
       }
       break;
     case "subtract":
+      if (buttonEnabled) {
+        if (!getFirst) {
+          a = parseFloat(para.textContent);
+          getFirst = true;
+          reWrite = true;
+          buttonEnabled = false;
+        } else {
+          b = parseFloat(para.textContent);
+          para.textContent = operate(a, b, "-");
+          a = parseFloat(para.textContent);
+          reWrite = true;
+          buttonEnabled = false;
+        }
+      }
       break;
     case "multiply":
+      if (buttonEnabled) {
+        if (!getFirst) {
+          a = parseFloat(para.textContent);
+          getFirst = true;
+          reWrite = true;
+          buttonEnabled = false;
+        } else {
+          b = parseFloat(para.textContent);
+          para.textContent = operate(a, b, "*");
+          a = parseFloat(para.textContent);
+          reWrite = true;
+          buttonEnabled = false;
+        }
+      }
       break;
     case "divide":
+      if (buttonEnabled) {
+        if (!getFirst) {
+          a = parseFloat(para.textContent);
+          getFirst = true;
+          reWrite = true;
+          buttonEnabled = false;
+        } else {
+          b = parseFloat(para.textContent);
+          para.textContent = operate(a, b, "/");
+          a = parseFloat(para.textContent);
+          reWrite = true;
+          buttonEnabled = false;
+        }
+      }
       break;
   }
 });
