@@ -38,6 +38,7 @@ let b;
 //reWrite for checking if the result can be overwritten or not.
 //buttonEnabled to prevent spam click operatioin button.
 //changeOperation to store operation value.
+//resultPressed to prevent result button to be spammed.
 let getFirst = false;
 let reWrite = false;
 let buttonEnabled = false;
