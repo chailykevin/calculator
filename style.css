@@ -50,3 +50,7 @@ main .buttons button {
   border-radius: 5px;
   border: 0.4px solid gray;
 }
+
+main button.zero {
+  width: 152.5px;
+}
