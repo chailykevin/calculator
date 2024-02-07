@@ -203,6 +203,16 @@ buttons.addEventListener("click", (e) => {
         resultPressed = false;
       }
       break;
+    case "clear":
+      a = 0;
+      b = 0;
+      getFirst = false;
+      reWrite = false;
+      buttonEnabled = false;
+      changeOperation = "";
+      resultPressed = true;
+      para.textContent = "0";
+      break;
   }
 });
 
