@@ -213,6 +213,15 @@ buttons.addEventListener("click", (e) => {
       resultPressed = true;
       para.textContent = "0";
       break;
+    case "negative":
+      if (para.textContent != "0") {
+        if (!para.textContent.includes("-")) {
+          para.textContent = `-${para.textContent}`;
+        } else {
+          para.textContent = para.textContent.replace("-", "");
+        }
+      }
+      break;
   }
 });
 
