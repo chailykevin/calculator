@@ -226,6 +226,19 @@ buttons.addEventListener("click", (e) => {
       if (!para.textContent.includes(".")) {
         para.textContent = `${para.textContent}.`;
       }
+    case "percentage":
+      if (para.textContent != "0") {
+        if (
+          changeOperation === "" ||
+          changeOperation === "*" ||
+          changeOperation === "/"
+        ) {
+          para.textContent = parseInt(para.textContent) / 100;
+        } else if (changeOperation === "+" || changeOperation === "-") {
+          para.textContent = a * (parseInt(para.textContent) / 100);
+        }
+      }
+      break;
   }
 });
 
