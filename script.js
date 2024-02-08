@@ -222,6 +222,10 @@ buttons.addEventListener("click", (e) => {
         }
       }
       break;
+    case "float":
+      if (!para.textContent.includes(".")) {
+        para.textContent = `${para.textContent}.`;
+      }
   }
 });
 
