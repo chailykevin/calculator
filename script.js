@@ -239,6 +239,14 @@ buttons.addEventListener("click", (e) => {
         }
       }
       break;
+    case "backspace":
+      if (para.textContent != "0") {
+        para.textContent = para.textContent.slice(0, -1);
+        if (para.textContent === "") {
+          para.textContent = "0";
+        }
+      }
+      break;
   }
 });
 
