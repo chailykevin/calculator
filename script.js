@@ -44,10 +44,31 @@ let reWrite = false;
 let buttonEnabled = false;
 let changeOperation = "";
 let resultPressed = true;
+let num = "";
 
 //Add event listener to number button
 buttons.addEventListener("click", (e) => {
-  switch (e.target.id) {
+  num = e.target.id;
+  pressed(num);
+});
+
+window.addEventListener("keydown", (e) => {
+  num = e.key.toLowerCase();
+  pressed(num);
+  console.log(num);
+});
+
+//Function to append paragraph element
+function updatePara(a) {
+  if (para.textContent === "0" || reWrite) {
+    para.textContent = a;
+  } else {
+    para.textContent += a;
+  }
+}
+
+function pressed(num) {
+  switch (num) {
     case "0":
       updatePara("0", reWrite);
       reWrite = false;
@@ -98,7 +119,7 @@ buttons.addEventListener("click", (e) => {
       reWrite = false;
       buttonEnabled = true;
       break;
-    case "add":
+    case "+":
       if (buttonEnabled) {
         if (!getFirst) {
           a = parseFloat(para.textContent);
@@ -121,7 +142,7 @@ buttons.addEventListener("click", (e) => {
         changeOperation = "+";
       }
       break;
-    case "subtract":
+    case "-":
       if (buttonEnabled) {
         if (!getFirst) {
           a = parseFloat(para.textContent);
@@ -145,7 +166,7 @@ buttons.addEventListener("click", (e) => {
         changeOperation = "-";
       }
       break;
-    case "multiply":
+    case "*":
       if (buttonEnabled) {
         if (!getFirst) {
           a = parseFloat(para.textContent);
@@ -169,7 +190,8 @@ buttons.addEventListener("click", (e) => {
         changeOperation = "*";
       }
       break;
-    case "divide":
+    case "/":
+      console.log("hi");
       if (buttonEnabled) {
         if (!getFirst) {
           a = parseFloat(para.textContent);
@@ -193,7 +215,8 @@ buttons.addEventListener("click", (e) => {
         changeOperation = "/";
       }
       break;
-    case "result":
+    case "enter":
+    case "=":
       if (getFirst && resultPressed) {
         b = parseFloat(para.textContent);
         para.textContent = operate(a, b, changeOperation);
@@ -222,11 +245,11 @@ buttons.addEventListener("click", (e) => {
         }
       }
       break;
-    case "float":
+    case ".":
       if (!para.textContent.includes(".")) {
         para.textContent = `${para.textContent}.`;
       }
-    case "percentage":
+    case "%":
       if (para.textContent != "0") {
         if (
           changeOperation === "" ||
@@ -247,14 +270,5 @@ buttons.addEventListener("click", (e) => {
         }
       }
       break;
-  }
-});
-
-//Function to append paragraph element
-function updatePara(a) {
-  if (para.textContent === "0" || reWrite) {
-    para.textContent = a;
-  } else {
-    para.textContent += a;
   }
 }
