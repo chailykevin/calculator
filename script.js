@@ -52,6 +52,7 @@ buttons.addEventListener("click", (e) => {
   pressed(num);
 });
 
+//Add event listener to keydown
 window.addEventListener("keydown", (e) => {
   num = e.key.toLowerCase();
   pressed(num);
@@ -67,6 +68,7 @@ function updatePara(a) {
   }
 }
 
+//Function to execute when keypress/click event listened
 function pressed(num) {
   switch (num) {
     case "0":
@@ -120,100 +122,16 @@ function pressed(num) {
       buttonEnabled = true;
       break;
     case "+":
-      if (buttonEnabled) {
-        if (!getFirst) {
-          a = parseFloat(para.textContent);
-          getFirst = true;
-          reWrite = true;
-          buttonEnabled = false;
-          changeOperation = "+";
-        } else {
-          b = parseFloat(para.textContent);
-          para.textContent = operate(a, b, changeOperation);
-          a = parseFloat(para.textContent);
-          reWrite = true;
-          buttonEnabled = false;
-          changeOperation = "+";
-        }
-      } else {
-        b = parseFloat(para.textContent);
-        reWrite = true;
-        resultPressed = true;
-        changeOperation = "+";
-      }
+      clickOperation("+");
       break;
     case "-":
-      if (buttonEnabled) {
-        if (!getFirst) {
-          a = parseFloat(para.textContent);
-          getFirst = true;
-          reWrite = true;
-          buttonEnabled = false;
-          changeOperation = "-";
-        } else {
-          b = parseFloat(para.textContent);
-          para.textContent = operate(a, b, changeOperation);
-          a = parseFloat(para.textContent);
-          reWrite = true;
-          buttonEnabled = false;
-          changeOperation = "-";
-          resultPressed = true;
-        }
-      } else {
-        b = parseFloat(para.textContent);
-        reWrite = true;
-        resultPressed = true;
-        changeOperation = "-";
-      }
+      clickOperation("-");
       break;
     case "*":
-      if (buttonEnabled) {
-        if (!getFirst) {
-          a = parseFloat(para.textContent);
-          getFirst = true;
-          reWrite = true;
-          buttonEnabled = false;
-          changeOperation = "*";
-        } else {
-          b = parseFloat(para.textContent);
-          para.textContent = operate(a, b, changeOperation);
-          a = parseFloat(para.textContent);
-          reWrite = true;
-          buttonEnabled = false;
-          changeOperation = "*";
-          resultPressed = true;
-        }
-      } else {
-        b = parseFloat(para.textContent);
-        reWrite = true;
-        resultPressed = true;
-        changeOperation = "*";
-      }
+      clickOperation("*");
       break;
     case "/":
-      console.log("hi");
-      if (buttonEnabled) {
-        if (!getFirst) {
-          a = parseFloat(para.textContent);
-          getFirst = true;
-          reWrite = true;
-          buttonEnabled = false;
-          changeOperation = "/";
-        } else {
-          b = parseFloat(para.textContent);
-          para.textContent = operate(a, b, changeOperation);
-          a = parseFloat(para.textContent);
-          reWrite = true;
-          buttonEnabled = false;
-          changeOperation = "/";
-          resultPressed = true;
-        }
-      } else {
-        b = parseFloat(para.textContent);
-        reWrite = true;
-        resultPressed = true;
-        changeOperation = "/";
-      }
+      clickOperation("/");
       break;
     case "enter":
     case "=":
@@ -227,14 +145,7 @@ function pressed(num) {
       }
       break;
     case "clear":
-      a = 0;
-      b = 0;
-      getFirst = false;
-      reWrite = false;
-      buttonEnabled = false;
-      changeOperation = "";
-      resultPressed = true;
-      para.textContent = "0";
+      clearCalc();
       break;
     case "negative":
       if (para.textContent != "0") {
@@ -271,4 +182,41 @@ function pressed(num) {
       }
       break;
   }
+}
+
+//Function for operation clicked
+function clickOperation(op) {
+  if (buttonEnabled) {
+    if (!getFirst) {
+      a = parseFloat(para.textContent);
+      getFirst = true;
+      reWrite = true;
+      buttonEnabled = false;
+      changeOperation = op;
+    } else {
+      b = parseFloat(para.textContent);
+      para.textContent = operate(a, b, changeOperation);
+      a = parseFloat(para.textContent);
+      reWrite = true;
+      buttonEnabled = false;
+      changeOperation = op;
+    }
+  } else {
+    b = parseFloat(para.textContent);
+    reWrite = true;
+    resultPressed = true;
+    changeOperation = op;
+  }
+}
+
+//Function to clear calculator
+function clearCalc() {
+  a = 0;
+  b = 0;
+  getFirst = false;
+  reWrite = false;
+  buttonEnabled = false;
+  changeOperation = "";
+  resultPressed = true;
+  para.textContent = "0";
 }
