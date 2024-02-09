@@ -50,6 +50,7 @@ let num = "";
 buttons.addEventListener("click", (e) => {
   num = e.target.id;
   pressed(num);
+  e.target.blur();
 });
 
 //Add event listener to keydown
