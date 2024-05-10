@@ -161,6 +161,7 @@ function pressed(num) {
       if (!para.textContent.includes(".")) {
         para.textContent = `${para.textContent}.`;
       }
+      break;
     case "%":
       if (para.textContent != "0") {
         if (
